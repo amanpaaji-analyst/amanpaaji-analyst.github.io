@@ -86,6 +86,11 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 .adm{margin-top:32px;display:grid;gap:10px}.adm input,.adm textarea{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
 .adm label{font-size:14px;color:var(--mute)}.row2{display:flex;gap:10px;flex-wrap:wrap}.sb{padding:9px 16px;border-radius:999px;border:1px solid var(--accent);background:transparent;color:var(--accent);font:600 14px Figtree,sans-serif;cursor:pointer;text-decoration:none}
 .sb.p{background:var(--accent);color:var(--on-accent)}.sb.d{border-color:#c77;color:#e99}.pl{color:var(--accent);font-weight:600;text-decoration:none}
+.thumb{width:100%;height:150px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.x{background:none;border:0;color:var(--mute);font-size:16px;cursor:pointer;padding:0 0 0 6px}.x:hover{color:#e99}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin:-8px 0 20px}.tools input,.tools select{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font:inherit}.tools input{flex:1;min-width:180px}
+.adm select{padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}.stt{min-height:1.4em;font-weight:600}
+[hidden]{display:none!important}
 @media(max-width:760px){.cg{grid-template-columns:1fr}.fw{flex-direction:column;align-items:flex-start}}
 @media(max-width:760px){.pg{grid-template-columns:1fr}.hero{grid-template-columns:1fr;gap:32px;padding-top:32px}.photo{order:-1;max-width:130px;box-shadow:6px 6px 0 var(--accent);justify-self:start}
 .grp{grid-template-columns:1fr}.two{grid-template-columns:1fr;gap:32px}nav b{display:none}}
@@ -109,14 +114,7 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 <p class="about">I am a Computer Science graduate currently pursuing an MCA in Data Science in Software Engineering at Roorkee Institute of Technology. I enjoy solving problems with data, from cleaning and querying it in SQL to analysing it with Python libraries and Excel.</p>
 <p class="about" style="margin-top:14px">Teaching programming and Excel has taught me to explain complex ideas simply, a skill I bring to every report and insight I share. I am looking for a Data Analyst role where I can apply my skills to real business problems and keep growing.</p></section>
 
-<section id="skills"><h2>Skills</h2>
-<div class="grp"><h3>Data analysis</h3><div class="chips"><span>Data cleaning &amp; preparation</span><span>Exploratory analysis</span><span>Data-driven decision making</span><span>Reporting &amp; insights</span></div></div>
-<div class="grp"><h3>Python for data</h3><div class="chips"><span>Python data-analysis libraries</span><span>Data manipulation</span></div></div>
-<div class="grp"><h3>Databases</h3><div class="chips"><span>SQL</span><span>SQL Workbench</span><span>Database management</span></div></div>
-<div class="grp"><h3>Tools</h3><div class="chips"><span>Advanced Excel</span><span>SPSS (basic)</span><span>Tally Prime</span><span>Visual Studio Code</span></div></div>
-<div class="grp"><h3>Programming</h3><div class="chips"><span>Python</span><span>C</span><span>C++</span><span>Java</span><span>HTML</span><span>CSS</span><span>JavaScript</span><span>OOP</span><span>Data Structures &amp; Algorithms</span></div></div>
-<div class="grp"><h3>Professional</h3><div class="chips"><span>Presentation development</span><span>Digital teaching methods</span><span>Data storytelling</span></div></div>
-</section>
+<section id="skills"><h2>Skills</h2><div id="sk"></div></section>
 
 <section id="projects"><h2>Projects</h2>
 <p class="note">Practice projects built on sample datasets to show my data cleaning, analysis and mining workflow. Figures are illustrative.</p>
@@ -146,16 +144,20 @@ table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;p
 <div id="c4" style="display:grid;gap:8px"></div>
 <table><tr><th>Measure</th><th>Value</th></tr><tr><td>Correlation (attendance vs score)</td><td>r = 0.71</td></tr><tr><td>Students analysed</td><td>240</td></tr></table>
 <p class="ins">Insight: higher attendance goes with higher scores (a strong positive link).</p></article>
-</div><div id="mypw" hidden><h2 style="margin-top:48px">My Projects</h2><div class="pg" id="myp"></div></div>
-<div id="adm" class="proj adm" hidden><h3>Manage projects (owner only)</h3>
-<p>Add, edit or delete projects here. Tap Export, then paste the code into <b>projects.js</b> on GitHub so every visitor sees the update.</p>
-<label for="ft">Project title</label><input id="ft" maxlength="80">
-<label for="fg">Tools / tags (comma separated)</label><input id="fg" placeholder="Python, SQL, Excel">
-<label for="fd">Description</label><textarea id="fd" rows="3" maxlength="400"></textarea>
-<label for="fl">Project link (optional, starts with https://)</label><input id="fl" inputmode="url">
-<div class="row2"><button class="sb p" id="fs" type="button">Add project</button><button class="sb" id="fc" type="button" hidden>Cancel edit</button></div>
-<div class="row2"><button class="sb" id="fx" type="button">Export projects.js</button><button class="sb d" id="fr" type="button">Reset draft</button></div>
-<textarea id="eo" rows="6" readonly hidden></textarea></div>
+</div><div id="mypw" hidden><h2 style="margin-top:48px">My Projects</h2>
+<div class="tools"><input id="qs" type="search" placeholder="Search projects" aria-label="Search projects"><select id="so" aria-label="Sort"><option value="n">Newest first</option><option value="a">A to Z</option></select></div>
+<div class="pg" id="myp"></div><div class="row2" style="margin-top:18px"><button class="sb p" id="mx" type="button" hidden>Explore all projects</button></div></div>
+<div id="adm" class="proj adm" hidden><h3>Owner panel</h3><p id="st" role="status" class="stt"></p>
+<div id="lg"><p>Only the owner can edit this site. Paste your GitHub token to unlock (it stays in this browser only).</p>
+<input id="tk" type="password" placeholder="GitHub token" autocomplete="off"><div class="row2"><button class="sb p" id="tc" type="button">Unlock</button></div></div>
+<div id="mg" hidden>
+<h3>Add a project</h3><label for="fl">Project link</label><input id="fl" inputmode="url" placeholder="https://github.com/you/project">
+<div class="row2"><button class="sb" id="ff" type="button">Fetch details from link</button></div>
+<label for="ft">Title</label><input id="ft" maxlength="80"><label for="fd">Overview</label><textarea id="fd" rows="3" maxlength="400"></textarea>
+<label for="fg">Tools / tags (comma separated)</label><input id="fg" placeholder="Excel, SQL, Python">
+<div class="row2"><button class="sb p" id="fs" type="button">Save project</button><button class="sb" id="fc" type="button" hidden>Cancel edit</button></div>
+<h3 style="margin-top:14px">Add a skill</h3><div class="row2"><select id="sg" aria-label="Skill group"></select><input id="sn" placeholder="New skill" style="flex:1;min-width:140px"><button class="sb p" id="sa" type="button">Add skill</button></div>
+<div class="row2" style="margin-top:10px"><button class="sb d" id="tf" type="button">Lock and forget token</button></div></div></div>
 </section>
 
 <section id="experience"><h2>Experience</h2>
@@ -199,22 +201,55 @@ var s=[["Computer",85],["English",79],["Maths",72],["Science",68]],t="";
 s.forEach(function(q){t+='<div class="hb"><span>'+q[0]+'</span><i style="width:'+q[1]+'%"></i><span>'+q[1]+'</span></div>'});
 document.getElementById("c4").innerHTML=t})();
 </script>
-<script src="projects.js"></script>
 <script>
-(function(){var K="amanProjectsDraft",base=window.PROJECTS||[],list=base.slice(),ed=-1,adm=false,$=function(i){return document.getElementById(i)};
-function esc(t){return String(t||"").replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+(function(){var OWN="amanpaaji-analyst",REPO="amanpaaji-analyst.github.io",API="https://api.github.com/repos/"+OWN+"/"+REPO,K="amanTok",$=function(i){return document.getElementById(i)};
+var D={projects:[],skills:{"Data analysis":["Data cleaning & preparation","Exploratory analysis","Data-driven decision making","Reporting & insights"],"Python for data":["Python data-analysis libraries","Data manipulation"],"Databases":["SQL","SQL Workbench","Database management"],"Tools":["Advanced Excel","SPSS (basic)","Tally Prime","Visual Studio Code"],"Programming":["Python","C","C++","Java","HTML","CSS","JavaScript","OOP","Data Structures & Algorithms"],"Professional":["Presentation development","Digital teaching methods","Data storytelling"]}};
+var own=false,adm=false,all=false,ed="",img="";
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 function ok(u){return /^https?:\/\//i.test(u||"")}
-function sv(){try{localStorage.setItem(K,JSON.stringify(list))}catch(e){}}
-function ld(){adm=location.hash==="#admin";if(adm){try{var d=localStorage.getItem(K);if(d)list=JSON.parse(d)}catch(e){}}else list=base.slice();$("adm").hidden=!adm;render();if(adm)$("adm").scrollIntoView()}
-function render(){var h="";list.forEach(function(p,i){h+='<article class="proj"><h3>'+esc(p.title)+'</h3><div class="tags">'+String(p.tags||"").split(",").map(function(t){t=t.trim();return t?"<span>"+esc(t)+"</span>":""}).join("")+'</div><p>'+esc(p.desc)+"</p>"+(ok(p.link)?'<a class="pl" href="'+esc(p.link)+'" target="_blank" rel="noopener">View project &rarr;</a>':"")+(adm?'<div class="row2"><button class="sb" data-e="'+i+'" type="button">Edit</button><button class="sb d" data-d="'+i+'" type="button">Delete</button></div>':"")+"</article>"});
-$("myp").innerHTML=h;$("mypw").hidden=!(list.length||adm)}
-function clr(){ed=-1;["ft","fg","fd","fl"].forEach(function(i){$(i).value=""});$("fs").textContent="Add project";$("fc").hidden=true}
-$("myp").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!adm)return;if(b.dataset.d!==undefined){if(confirm("Delete this project?")){list.splice(+b.dataset.d,1);sv();render()}}
-else if(b.dataset.e!==undefined){var p=list[+b.dataset.e];ed=+b.dataset.e;$("ft").value=p.title||"";$("fg").value=p.tags||"";$("fd").value=p.desc||"";$("fl").value=p.link||"";$("fs").textContent="Update project";$("fc").hidden=false;$("adm").scrollIntoView()}});
-$("fs").onclick=function(){var t=$("ft").value.trim();if(!t){$("ft").focus();return}var p={title:t,tags:$("fg").value.trim(),desc:$("fd").value.trim(),link:$("fl").value.trim()};if(ed>=0)list[ed]=p;else list.push(p);sv();clr();render()};
+function tok(){try{return localStorage.getItem(K)||""}catch(e){return""}}
+function say(m,bad){var p=$("st");p.textContent=m;p.style.color=bad?"#e99":"var(--accent)"}
+function kind(u){var l=(u||"").toLowerCase();return/github\.com/.test(l)?"GitHub":/kaggle\.com/.test(l)?"Kaggle":/docs\.google\.com\/spreadsheets|\.csv(\?|$)/.test(l)?"Google Sheets":/\.xlsx?(\?|$)|onedrive|sharepoint|1drv/.test(l)?"Excel":/tableau/.test(l)?"Tableau":/powerbi/.test(l)?"Power BI":/colab\.research/.test(l)?"Colab":/drive\.google/.test(l)?"Google Drive":"Project"}
+function headers(){return{Authorization:"Bearer "+tok(),Accept:"application/vnd.github+json"}}
+async function save(msg){var g=await fetch(API+"/contents/data.json",{headers:headers()}),sha=g.ok?(await g.json()).sha:undefined;
+var r=await fetch(API+"/contents/data.json",{method:"PUT",headers:headers(),body:JSON.stringify({message:msg,sha:sha,content:btoa(unescape(encodeURIComponent(JSON.stringify(D,null,2))))})});
+if(!r.ok)throw new Error(r.status==401||r.status==403||r.status==404?"GitHub did not accept the token. Check it has Contents read and write access to this repository.":"Save failed ("+r.status+")")}
+async function commit(msg){say("Saving...");try{await save(msg);say("Saved. Other visitors will see it in 1 to 2 minutes.");return true}catch(e){say(e.message,1);return false}}
+function skills(){var h="";Object.keys(D.skills).forEach(function(g){h+='<div class="grp"><h3>'+esc(g)+'</h3><div class="chips">'+D.skills[g].map(function(x,i){return"<span>"+esc(x)+(own&&adm?' <button class="x" data-g="'+esc(g)+'" data-i="'+i+'" aria-label="Delete '+esc(x)+'" type="button">&times;</button>':"")+"</span>"}).join("")+"</div></div>"});$("sk").innerHTML=h;
+$("sg").innerHTML=Object.keys(D.skills).map(function(g){return"<option>"+esc(g)+"</option>"}).join("")}
+function projects(){var q=$("qs").value.toLowerCase(),l=D.projects.filter(function(p){return(p.title+" "+p.desc+" "+p.tags).toLowerCase().indexOf(q)>-1});
+l.sort($("so").value=="a"?function(a,b){return a.title.localeCompare(b.title)}:function(a,b){return(b.date||"").localeCompare(a.date||"")});
+var shown=all||q?l:l.slice(0,3),h="";
+shown.forEach(function(p){h+='<article class="proj">'+(ok(p.img)?'<img class="thumb" src="'+esc(p.img)+'" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()">':"")+'<span class="tag2">'+esc(p.kind||kind(p.link))+"</span><h3>"+esc(p.title)+'</h3><div class="tags">'+String(p.tags||"").split(",").map(function(t){t=t.trim();return t?"<span>"+esc(t)+"</span>":""}).join("")+"</div><p>"+esc(p.desc)+"</p>"+(ok(p.link)?'<a class="pl" href="'+esc(p.link)+'" target="_blank" rel="noopener">Open project &rarr;</a>':"")+(own&&adm?'<div class="row2"><button class="sb" data-e="'+esc(p.id)+'" type="button">Edit</button><button class="sb d" data-d="'+esc(p.id)+'" type="button">Delete</button></div>':"")+"</article>"});
+$("myp").innerHTML=h||(D.projects.length?"<p>No match.</p>":"");$("mx").hidden=q||D.projects.length<4;$("mx").textContent=all?"Show fewer":"Explore all projects ("+D.projects.length+")";
+$("mypw").hidden=!(D.projects.length||(own&&adm))}
+function ui(){adm=location.hash==="#admin";$("adm").hidden=!adm;$("lg").hidden=own;$("mg").hidden=!own;skills();projects()}
+function clr(){ed="";img="";["fl","ft","fd","fg"].forEach(function(i){$(i).value=""});$("fs").textContent="Save project";$("fc").hidden=true}
+async function unlock(t){try{var r=await fetch(API,{headers:{Authorization:"Bearer "+t,Accept:"application/vnd.github+json"}}),j=await r.json();
+if(r.ok&&j.permissions&&j.permissions.push){try{localStorage.setItem(K,t)}catch(e){}own=true;say("Unlocked.");ui();return}
+say("This token cannot edit this site.",1)}catch(e){say("Could not reach GitHub. Check internet.",1)}}
+$("tc").onclick=function(){var t=$("tk").value.trim();if(t)unlock(t);$("tk").value=""};
+$("tf").onclick=function(){try{localStorage.removeItem(K)}catch(e){}own=false;say("");ui()};
+$("ff").onclick=async function(){var u=$("fl").value.trim();if(!ok(u)){say("Paste a link starting with https://",1);return}say("Reading link...");
+try{var m=u.match(/github\.com\/([^\/]+)\/([^\/?#]+)/i),o;
+if(m){var r=await fetch("https://api.github.com/repos/"+m[1]+"/"+m[2].replace(/\.git$/,""));if(!r.ok)throw 0;var j=await r.json();o={title:j.name.replace(/[-_]/g," "),desc:j.description||"",tags:[j.language].concat(j.topics||[]).filter(Boolean).join(", ")}}
+else{var r2=await fetch("https://api.microlink.io/?url="+encodeURIComponent(u)),j2=((await r2.json()).data)||{};o={title:j2.title||"",desc:j2.description||"",img:(j2.image&&j2.image.url)||""}}
+if(o.title&&!$("ft").value)$("ft").value=o.title;if(o.desc&&!$("fd").value)$("fd").value=o.desc;if(o.tags&&!$("fg").value)$("fg").value=o.tags;if(o.img)img=o.img;
+say(o.title||o.desc?"Details filled. Edit if you like, then Save.":"Nothing found. Please type the title and overview.",!(o.title||o.desc))}
+catch(e){say("Could not read this link. Type the title and overview yourself.",1)}};
+$("fs").onclick=async function(){var t=$("ft").value.trim(),u=$("fl").value.trim();if(!t){say("Title is required.",1);return}if(u&&!ok(u)){say("Link must start with https://",1);return}
+var p={id:ed||Date.now().toString(36),title:t,desc:$("fd").value.trim(),tags:$("fg").value.trim(),link:u,img:img,kind:kind(u),date:new Date().toISOString().slice(0,10)};
+var old=D.projects.slice();if(ed){D.projects=D.projects.map(function(x){return x.id==ed?Object.assign({},x,p,{date:x.date,img:p.img||x.img}):x})}else D.projects.push(p);
+if(await commit((ed?"Update":"Add")+" project: "+t)){clr()}else D.projects=old;ui()};
 $("fc").onclick=clr;
-$("fx").onclick=function(){var t="window.PROJECTS = "+JSON.stringify(list,null,2)+";",o=$("eo");o.hidden=false;o.value=t;o.select();try{navigator.clipboard.writeText(t).catch(function(){})}catch(e){}};
-$("fr").onclick=function(){if(confirm("Discard draft and go back to the published list?")){try{localStorage.removeItem(K)}catch(e){}list=base.slice();clr();render()}};
-window.addEventListener("hashchange",ld);ld()})();
+$("myp").onclick=async function(e){var b=e.target.closest("button");if(!b||!own)return;
+if(b.dataset.d){if(!confirm("Delete this project?"))return;var old=D.projects.slice();D.projects=D.projects.filter(function(x){return x.id!=b.dataset.d});if(!(await commit("Delete project")))D.projects=old;ui()}
+else if(b.dataset.e){var p=D.projects.filter(function(x){return x.id==b.dataset.e})[0];ed=p.id;img=p.img||"";$("fl").value=p.link||"";$("ft").value=p.title;$("fd").value=p.desc||"";$("fg").value=p.tags||"";$("fs").textContent="Update project";$("fc").hidden=false;$("adm").scrollIntoView()}};
+$("sk").onclick=async function(e){var b=e.target.closest("button.x");if(!b||!own)return;var g=b.dataset.g,old=D.skills[g].slice();D.skills[g].splice(+b.dataset.i,1);if(!(await commit("Remove skill")))D.skills[g]=old;ui()};
+$("sa").onclick=async function(){var g=$("sg").value,n=$("sn").value.trim();if(!n)return;D.skills[g].push(n);if(await commit("Add skill: "+n))$("sn").value="";else D.skills[g].pop();ui()};
+$("qs").oninput=$("so").onchange=projects;$("mx").onclick=function(){all=!all;projects()};
+window.addEventListener("hashchange",ui);
+fetch("data.json?v="+Date.now()).then(function(r){return r.ok?r.json():null}).then(function(j){if(j){if(j.skills)D.skills=j.skills;if(j.projects)D.projects=j.projects}}).catch(function(){}).then(function(){ui();if(tok()&&location.hash==="#admin")unlock(tok())});
+})();
 </script>
 </body></html>
