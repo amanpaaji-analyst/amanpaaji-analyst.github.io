@@ -1,5 +1,19 @@
 {
-  "projects": [],
+  "formKey": "",
+  "hideSamples": false,
+  "projects": [
+    {
+      "id": "muqifmet",
+      "title": "Banking Management System",
+      "desc": "A console-based Bank Management System developed using C++. This project is designed to manage basic banking operations through a simple and user-friendly interface. It includes features such as account creation, user login, password management, deposit, withdrawal, balance checking, fund transfer, account information management, and account deletion. The project uses Object-Oriented Programming c",
+      "details": "This Bank Management System is a C++ console-based application developed using Object-Oriented Programming and File Handling. It provides a simple way to perform and manage basic banking operations.\n\nKey features include:\n• New account creation with customer details\n• Secure user login and password management\n• Deposit and withdrawal of money\n• Checking account balance\n• Money transfer between accounts\n• Viewing and managing account information\n• Password recovery\n• Account deletion\n• File-based storage and management of account data\n\nThe project demonstrates practical implementation of C++ concepts such as classes, objects, functions, conditional statements, file handling, data validation, and basic authentication.",
+      "tags": "C++, Object-Oriented Programming (OOP), File Handling, C++ File Streams",
+      "link": "https://github.com/amanpaaji-analyst/amanpaaji-analyst.github.io/blob/21cec73832f49786e909c17ea05400e6330ada08/BMS.cpp",
+      "img": "",
+      "kind": "GitHub",
+      "date": "2026-10-02"
+    }
+  ],
   "skills": {
     "Data analysis": [
       "Data cleaning & preparation",
@@ -38,7 +52,5 @@
       "Digital teaching methods",
       "Data storytelling"
     ]
-  },
-  "formKey": "",
-  "hideSamples": false
+  }
 }
