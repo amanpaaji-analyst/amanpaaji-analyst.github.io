@@ -1,0 +1,44 @@
+{
+  "projects": [],
+  "skills": {
+    "Data analysis": [
+      "Data cleaning & preparation",
+      "Exploratory analysis",
+      "Data-driven decision making",
+      "Reporting & insights"
+    ],
+    "Python for data": [
+      "Python data-analysis libraries",
+      "Data manipulation"
+    ],
+    "Databases": [
+      "SQL",
+      "SQL Workbench",
+      "Database management"
+    ],
+    "Tools": [
+      "Advanced Excel",
+      "SPSS (basic)",
+      "Tally Prime",
+      "Visual Studio Code"
+    ],
+    "Programming": [
+      "Python",
+      "C",
+      "C++",
+      "Java",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "OOP",
+      "Data Structures & Algorithms"
+    ],
+    "Professional": [
+      "Presentation development",
+      "Digital teaching methods",
+      "Data storytelling"
+    ]
+  },
+  "formKey": "",
+  "hideSamples": false
+}
